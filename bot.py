@@ -1,29 +1,16 @@
 import asyncio
-import os
 from aiogram import Bot, Dispatcher, types
-from aiogram.filters import CommandStart
+from aiogram.filters import Command
 
-BOT_TOKEN = os.getenv("BOT_TOKEN")
+BOT_TOKEN = "8375467422:AAFbk6Z6k0dDOXfEnRP6roYfG2nvYFhrpwU"
 
 async def main():
     bot = Bot(token=BOT_TOKEN)
     dp = Dispatcher()
 
-    @dp.message(CommandStart())
+    @dp.message(Command("start"))
     async def start(message: types.Message):
-        await message.answer(
-            "ورود به پنل فروش 👇",
-            reply_markup=types.InlineKeyboardMarkup(
-                inline_keyboard=[
-                    [
-                        types.InlineKeyboardButton(
-                            text="ورود به پنل",
-                            url="https://darooneman.github.io/my-telegram-app/"
-                        )
-                    ]
-                ]
-            )
-        )
+        await message.answer("✅ ربات با موفقیت روی Render اجرا شد!")
 
     print("Bot is running...")
     await dp.start_polling(bot)
